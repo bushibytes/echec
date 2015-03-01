@@ -1,0 +1,16 @@
+{
+  "name": "echec-react",
+  "version": "1.0.0",
+  "description": "Echec.ca version in io.js, ES6, and react with a flux architecture.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "co-views": "^0.3.0",
+    "jade": "^1.9.2",
+    "koa-router": "^4.2.0"
+  }
+}
