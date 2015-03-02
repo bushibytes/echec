@@ -4,13 +4,33 @@
   "description": "Echec.ca version in io.js, ES6, and react with a flux architecture.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "watchify -o static/bundle.js -v -d js/**/*",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > bundle.min.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^9.0.3",
     "co-views": "^0.3.0",
+    "envify": "^3.2.0",
+    "flux": "^2.0.1",
+    "gulp": "^3.8.11",
     "jade": "^1.9.2",
-    "koa-router": "^4.2.0"
+    "koa-router": "^4.2.0",
+    "koa-static": "^1.4.9",
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2",
+    "reactify": "^1.0.0",
+    "watchify": "^2.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "envify",
+      "babelify",
+      "reactify"
+    ]
+  },
+  "devDependencies": {
+    "babelify": "^5.0.3"
   }
 }

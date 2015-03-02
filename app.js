@@ -1,6 +1,7 @@
 var app = require('koa')();
 var views = require('co-views');
 var router = require('koa-router')();
+var serve = require('koa-static');
 
 // x-response-time
 
@@ -28,10 +29,14 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
+
+// Static files
+app.use(serve('static/'));
+
 // response
 
 router.get('/', function *(next) {
-  this.body = yield render('hello');
+  this.body = yield render('index');
 });
 
 router.get('/goodbye', function *(next) {
