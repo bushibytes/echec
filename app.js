@@ -1,5 +1,6 @@
 var app = require('koa')();
 var views = require('co-views');
+var less = require('koa-less');
 var router = require('koa-router')();
 var serve = require('koa-static');
 
@@ -31,6 +32,7 @@ app.use(function *(next){
 
 
 // Static files
+app.use(less('static/'));
 app.use(serve('static/'));
 
 // response
