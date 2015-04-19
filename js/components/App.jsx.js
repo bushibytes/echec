@@ -1,5 +1,6 @@
 import React from 'react'
 import EchecList from './EchecList.jsx'
+import EchecActionCreator from './EchecActionCreator.jsx'
 import {AppBar, AppCanvas} from "material-ui"
 import Router from "react-router"
 import {RouteHandler, DefaultRoute, Route} from "react-router"
@@ -32,3 +33,4 @@ Router.run(routes, (Handler) =>
   React.render(<Handler/>, document.body)
 );
 
+EchecActionCreator.fetchEchecs();

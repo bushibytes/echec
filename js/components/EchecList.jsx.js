@@ -1,5 +1,6 @@
 import React from 'react'
 import EchecTile from './EchecTile.jsx'
+import EchecStore from './EchecStore.js'
 import InfiniteScrollConstructor from 'react-infinite-scroll'
 
 var InfiniteScroll = InfiniteScrollConstructor(React);
@@ -8,13 +9,20 @@ export default class EchecList extends React.Component {
 
   constructor(props) {
     super(props);
-    var echecs = [
-      {id:31, name:'Beer fail', image:'http://www.echec.ca/images/31.jpg'},
-      {id:32, name:'Justin delete', image:'http://www.echec.ca/images/32.jpg'},
-      {id:15, name:'sudo rm *', image:'http://www.echec.ca/images/15.jpg'},
-      {id:26, name:'so many stickies', image:'http://www.echec.ca/images/26.jpg'}
-      ]
-    this.state = {echecs: echecs, hasMore: true};
+    this.state = {echecs: EchecStore.echecs, hasMore: true};
+  }
+
+  onChange() {
+    this.setState({echecs: EchecStore.echecs, hasMore: true})
+  }
+
+  componentDidMount() {
+    //XXX bind this, otherwise we end up being bound to echecstore in onchange
+    EchecStore.addChangeListener(this.onChange.bind(this));
+  }
+
+  componentDidUnMount() {
+    EchecStore.removeChangeListener(this.onChange.bind(this));
   }
 
   getMoreEchecs(page) {
