@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "watchify -o static/bundle.js -v -d js/**/*",
+    "test": "jest",
     "build": "NODE_ENV=production browserify . | uglifyjs -cm > bundle.min.js"
   },
   "author": "",
@@ -36,7 +37,17 @@
       "babelify"
     ]
   },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
   "devDependencies": {
-    "babelify": "^5.0.3"
+    "babel-jest": "^5.0.1",
+    "babelify": "^5.0.3",
+    "jest-cli": "^0.4.0"
   }
 }

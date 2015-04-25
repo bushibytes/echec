@@ -20,6 +20,10 @@ class EchecStore extends EventEmitter {
     );
   }
 
+  getAll() {
+    return this.echecs;
+  }
+
   emitChange() {
     this.emit('Change')
   }
