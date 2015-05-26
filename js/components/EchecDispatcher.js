@@ -1,3 +1,3 @@
-import {Dispatcher} from 'Flux'
+import {Dispatcher} from 'Flux';
 
-export default new Dispatcher()
+export default new Dispatcher();

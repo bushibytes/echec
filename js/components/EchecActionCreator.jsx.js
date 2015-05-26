@@ -1,10 +1,10 @@
-import EchecDispatcher from './EchecDispatcher.js'
-import $ from 'jquery'
+import EchecDispatcher from './EchecDispatcher.js';
+import $ from 'jquery';
 
 export default {
 
   fetchEchecs() {
-    $.get("/api/echecs", (echecs) => {
+    $.get('/api/echecs', (echecs) => {
       EchecDispatcher.dispatch({
         type: 'Update Echecs',
         payload: echecs
@@ -12,4 +12,4 @@ export default {
     });
   }
 
-}
+};

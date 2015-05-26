@@ -1,17 +1,16 @@
-import React from 'react'
-import EchecList from './EchecList.jsx'
-import EchecActionCreator from './EchecActionCreator.jsx'
-import {AppBar, AppCanvas} from "material-ui"
-import Router from "react-router"
-import {RouteHandler, DefaultRoute, Route} from "react-router"
+import React from 'react';
+import EchecList from './EchecList.jsx';
+import EchecActionCreator from './EchecActionCreator.jsx';
+import {AppBar, AppCanvas} from 'material-ui';
+import Router from 'react-router';
+import {RouteHandler, DefaultRoute, Route} from 'react-router';
 
 export default class EchecApp extends React.Component {
 
   render() {
     return (
       <AppCanvas>
-        <AppBar title="Echec.ca" zDepth={0}>
-        </AppBar>
+        <AppBar title="Echec.ca" zDepth={0}/>
         <div className="echec-list">
           <RouteHandler/>
         </div>
@@ -24,10 +23,11 @@ export default class EchecApp extends React.Component {
 
 }
 
-var routes =
+const routes = (
   <Route name="echecApp" path="/" handler={EchecApp}>
     <DefaultRoute handler={EchecList}/>
   </Route>
+  );
 
 Router.run(routes, (Handler) =>
   React.render(<Handler/>, document.body)

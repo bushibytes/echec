@@ -1,19 +1,13 @@
-import EventEmitter from 'events'
-import EchecDispatcher from './EchecDispatcher.js'
+import EventEmitter from 'events';
+import EchecDispatcher from './EchecDispatcher.js';
 
 class EchecStore extends EventEmitter {
 
-  constructor() {
-    super()
-    this.echecs = []
-    this.register()
-  }
-
-  register(){
+  register() {
     EchecDispatcher.register( (action) => {
-      if(action.type === 'Update Echecs') {
+      if (action.type === 'Update Echecs') {
         this.echecs = action.payload;
-        //TODO refactor into a setter
+        // TODO refactor into a setter
         this.emitChange();
       }
     }
@@ -25,17 +19,24 @@ class EchecStore extends EventEmitter {
   }
 
   emitChange() {
-    this.emit('Change')
+    this.emit('Change');
   }
 
   addChangeListener(callback) {
-    this.on('Change', callback)
+    this.on('Change', callback);
   }
 
   removeChangeListener(callback) {
-    this.removeListener('Change', callback)
+    this.removeListener('Change', callback);
   }
+
+  constructor() {
+    super();
+    this.echecs = [];
+    this.register();
+  }
+
 
 }
 
-export default new EchecStore()
+export default new EchecStore();
