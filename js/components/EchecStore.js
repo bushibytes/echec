@@ -1,4 +1,5 @@
 import EventEmitter from 'events';
+import _ from 'underscore';
 import EchecDispatcher from './EchecDispatcher.js';
 
 class EchecStore extends EventEmitter {
@@ -8,6 +9,14 @@ class EchecStore extends EventEmitter {
       if (action.type === 'Update Echecs') {
         this.echecs = action.payload;
         // TODO refactor into a setter
+        this.emitChange();
+      }
+      if (action.type === 'Vote Up') {
+        console.log("voted up, attempting to find right echec.");
+        let echec = _.findWhere(this.echecs, {id:action.payload});
+        console.log("found echec:", echec);
+        if (echec)
+          echec.votes++
         this.emitChange();
       }
     }

@@ -10,6 +10,14 @@ export default {
         payload: echecs
       });
     });
+  },
+
+  vote(imageId) {
+    console.log(`Voted! for ${imageId}`);
+    EchecDispatcher.dispatch({
+      type: 'Vote Up',
+      payload: imageId
+    });
   }
 
 };

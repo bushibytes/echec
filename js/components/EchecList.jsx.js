@@ -16,40 +16,19 @@ export default class EchecList extends React.Component {
     this.setState({echecs: EchecStore.echecs, hasMore: true});
   }
 
-  getMoreEchecs(page) {
-    console.log(`loading page:${page}`);
-    setTimeout( ()=> {
-      let moreEchecs = [
-        {id: 33, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'},
-        {id: 34, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'},
-        {id: 35, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'},
-        {id: 36, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'},
-        {id: 37, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'}
-      ];
-      this.setState({
-        hasMore: false,
-        echecs: this.state.echecs.concat(moreEchecs)
-      });
-    }, 2000);
-  }
-
   render() {
     return (
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={this.getMoreEchecs.bind(this)}
-        hasMore={this.state.hasMore}
-        loader={<div className="loader">Loading ...</div>}>
-        <div className="container">{
-          this.state.echecs
-            .map(echec =>
-              <EchecTile
-                key={echec.id}
-                name={echec.name}
-                image={echec.image} />
-            )
-        }</div>
-      </InfiniteScroll>
+      <div id="echecs-list">{
+        this.state.echecs
+          .map(echec =>
+            <EchecTile
+              key={echec.id}
+              imageId={echec.id}
+              name={echec.name}
+              image={echec.image}
+              votes={echec.votes} />
+          )
+      }</div>
     );
   }
 

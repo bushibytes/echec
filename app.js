@@ -9,7 +9,6 @@ const json = require('koa-json');
 
 
 // x-response-time
-
 let render = views('views', {default: 'jade'});
 
 app
@@ -17,7 +16,6 @@ app
   .use(router.allowedMethods());
 
 // logger
-
 app.use(function *logger(next) {
   const start = new Date();
   yield next;
@@ -41,10 +39,10 @@ router.get('/', function *indexRoute() {
 // API
 router.get('/api/echecs', function *echecsApiRoute() {
   let echecs = [
-    {id: 31, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg'},
-    {id: 32, name: 'Justin delete', image: 'http://www.echec.ca/images/32.jpg'},
-    {id: 15, name: 'sudo rm *', image: 'http://www.echec.ca/images/15.jpg'},
-    {id: 26, name: 'so many stickies', image: 'http://www.echec.ca/images/26.jpg'}
+    {id: 31, name: 'Beer fail', image: 'http://www.echec.ca/images/31.jpg', votes:1},
+    {id: 32, name: 'Justin delete', image: 'http://www.echec.ca/images/32.jpg', votes:1},
+    {id: 15, name: 'sudo rm *', image: 'http://www.echec.ca/images/15.jpg', votes:1},
+    {id: 26, name: 'so many stickies', image: 'http://www.echec.ca/images/26.jpg', votes:1}
   ];
   this.body = echecs;
 });
