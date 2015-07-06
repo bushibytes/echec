@@ -13,7 +13,12 @@ export default {
   },
 
   vote(imageId) {
-    console.log(`Voted! for ${imageId}`);
+    $.ajax({
+      type: "POST",
+      url: "/api/echecs/"+imageId+"/vote",
+      contentType: "application/json",
+      data: {"data": "mydata"}
+    });
     EchecDispatcher.dispatch({
       type: 'Vote Up',
       payload: imageId

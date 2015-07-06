@@ -1,9 +1,6 @@
 import React from 'react';
 import EchecTile from './EchecTile.jsx';
 import EchecStore from './EchecStore.js';
-import infiniteScrollConstructor from 'react-infinite-scroll';
-
-const InfiniteScroll = infiniteScrollConstructor(React);
 
 export default class EchecList extends React.Component {
 
@@ -17,6 +14,7 @@ export default class EchecList extends React.Component {
   }
 
   render() {
+    let stuff = this.state.echecs.map(echec => "Bob");
     return (
       <div id="echecs-list">{
         this.state.echecs
@@ -38,7 +36,7 @@ export default class EchecList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {echecs: EchecStore.echecs, hasMore: true};
+    this.state = {echecs: EchecStore.echecs};
   }
 
 }

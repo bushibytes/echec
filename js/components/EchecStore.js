@@ -1,5 +1,6 @@
 import EventEmitter from 'events';
 import _ from 'underscore';
+import Immutable from 'immutable';
 import EchecDispatcher from './EchecDispatcher.js';
 
 class EchecStore extends EventEmitter {
