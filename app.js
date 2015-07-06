@@ -50,9 +50,9 @@ function* voteEchec(next) {
   let id = this.params.id;
   let votes = 2;
   try{
-    var cursor = yield rethink.db('echecs').table('echecs').filter({id: id}).update({votes: rethink.row("votes").add(1)}).run(this.db);
-    var result = yield cursor.toArray();
-    this.body.result
+    var update = yield rethink.db('echecs').table('echecs').filter({id: id}).update({votes: rethink.row("votes").add(1)}).run(this.db);
+    var result = yield update
+    this.body = result
   }
   catch(e) {
     this.status = 500;

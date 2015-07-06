@@ -4,6 +4,7 @@ import MUI from 'material-ui';
 const FlatButton = MUI.FlatButton;
 
 class EchecTile extends React.Component {
+
   render() {
     return (
       <div className="grid-item">

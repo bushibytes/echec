@@ -8,16 +8,17 @@ class EchecStore extends EventEmitter {
   register() {
     EchecDispatcher.register( (action) => {
       if (action.type === 'Update Echecs') {
-        this.echecs = action.payload;
+        this.echecs = Immutable.List(action.payload);
         // TODO refactor into a setter
         this.emitChange();
       }
       if (action.type === 'Vote Up') {
-        console.log("voted up, attempting to find right echec.");
-        let echec = _.findWhere(this.echecs, {id:action.payload});
-        console.log("found echec:", echec);
-        if (echec)
-          echec.votes++
+        let echec = this.echecs.find( (echec) => echec.id === action.payload );
+        if (echec) {
+          let index = this.echecs.indexOf(echec)
+          echec.votes++;
+          this.echecs = this.echecs.set({index: index, value: echec});
+        }
         this.emitChange();
       }
     }

@@ -14,7 +14,6 @@ export default class EchecList extends React.Component {
   }
 
   render() {
-    let stuff = this.state.echecs.map(echec => "Bob");
     return (
       <div id="echecs-list">{
         this.state.echecs
